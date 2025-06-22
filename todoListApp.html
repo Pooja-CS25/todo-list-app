@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #68b5cc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .app-container {
+      background: #73e1a18d;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #0f3d7e;
+    }
+
+    #input {
+      width: 70%;
+      padding: 8px;
+      border: 1px solid #575859;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-left: 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: context-menu;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      background-color: #ffffff;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    li button {
+      background-color: #ff4d4d;
+    }
+
+    li button:hover {
+      background-color: #e60707;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <h2>Todo App</h2>
+  <input id="input" type="text" placeholder="Enter the item">
+  <button onclick="add()">Add</button>
+  <ul id="List-container">
+    <li>
+      Hello
+      <button onclick="deleteItem(event)">Delete</button>
+    </li>
+  </ul>
+</div>
+
+<script>
+  var ul = document.getElementById("List-container");
+  var input = document.getElementById("input");
+
+  function add() {
+    if (input.value.trim() === "") return;
+    var listitem = document.createElement("li");
+    listitem.innerHTML = input.value + "<button onclick='deleteItem(event)'>Delete</button>";
+    ul.append(listitem);
+    input.value = "";
+  }
+
+  function deleteItem(event) {
+    event.target.parentElement.remove();
+  }
+</script>
+
+</body>
+</html>
